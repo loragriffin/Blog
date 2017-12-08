@@ -5,6 +5,6 @@ from django.shortcuts import render
 # view handles the http request and returns a response
 
 
-def posts_home(request):
+def post_home(request):
 
     return HttpResponse("<h1>Hello</h1")
