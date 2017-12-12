@@ -1,19 +1,10 @@
-<!--DOCTYPE html-->
-<html>
-  <head>
+{% extends "base.html" %}
 
-  </head>
-  <body>
+{% block title %}
+  {{ instance.title }} | {{ block.super }}
+{% endblock %}
 
-    {% if messages %}
-      <ul class="messages">
-        {% for message in messages%}
-          <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-            {{ message }}
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
+{% block content%}
 
     <h1>{{ title }}</h1>
 
@@ -21,5 +12,4 @@
       {{ instance.content }}<br/>
       {{ instance.timestamp }}<br/>
 
-  </body>
-</html>
+{% endblock content %}
