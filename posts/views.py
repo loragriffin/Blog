@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Post
 from .forms import PostForm
@@ -30,12 +31,10 @@ def post_detail(request, id):
 
 
 def post_list(request):
-    queryset = Post.objects.all()
-    # if request.user.is_authenticated():
-    #     context = {
-    #         "title": "My User List"
-    #     }
-    # else:
+    queryset_list = Post.objects.all().order_by("-timestamp")
+    paginator = Paginator(queryset_list, 10)  # Show 25 contacts per page
+    page = request.GET.get('page')
+    queryset = paginator.get_page(page)
     context = {
         "object_list": queryset,
         "title": "List"
