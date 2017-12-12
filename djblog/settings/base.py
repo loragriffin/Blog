@@ -134,8 +134,13 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static-compiled")
 
+MEDIA_URL = '/static/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media")
+
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, "static"),
+
 ]
 
 # Uncomment for forever-cacheable files and compression support

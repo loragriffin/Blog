@@ -8,7 +8,7 @@ from .forms import PostForm
 
 
 def post_create(request):
-    form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None, request.FILES or None)
     # checking form is filled out
     if form.is_valid():
         instance = form.save(commit=False)
@@ -44,7 +44,7 @@ def post_list(request):
 
 def post_update(request, id):
     instance = get_object_or_404(Post, id=id)
-    form = PostForm(request.POST or None, instance=instance)
+    form = PostForm(request.POST or None, request.FILES or None, instance=instance)
     # checking form is filled out
     if form.is_valid():
         instance = form.save(commit=False)
